@@ -1,5 +1,5 @@
 import pg8000
-from config import (user, password, host, port)
+from .config2 import (user, password, host, port)
 
 
 class Twitter:
@@ -29,10 +29,10 @@ class Twitter:
         cursor.execute('''
                         CREATE TABLE IF NOT EXISTS profile (
                             company_id SERIAL PRIMARY KEY,
-                            name VARCHAR(25) UNIQUE,
+                            name TEXT UNIQUE,
                             followers INTEGER,
                             likes INTEGER,
-                            URL VARCHAR(100) UNIQUE
+                            URL TEXT UNIQUE
                             );
                         ''')
 
@@ -67,11 +67,3 @@ class Twitter:
         cursor.execute("SELECT * from posts;")
         record = cursor.fetchall()
         print(record)
-
-
-twitter = Twitter()
-twitter.connect()
-twitter.createTables()
-twitter.intoProfile('n', 15, 16, '.coy')
-twitter.intoPosts(3, 8, 7, "march", 1)
-twitter.select()

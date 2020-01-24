@@ -1,5 +1,5 @@
 import pg8000
-from config import (user, password, host, port)
+from .config2 import (user, password, host, port)
 
 
 class LinkedIn:
@@ -29,11 +29,11 @@ class LinkedIn:
         cursor.execute('''
                         CREATE TABLE IF NOT EXISTS profile (
                             company_id SERIAL PRIMARY KEY,
-                            name VARCHAR(25) UNIQUE,
+                            name TEXT UNIQUE,
                             followers INTEGER,
                             employees_on_linkedin INTEGER,
                             size INTEGER,
-                            URL VARCHAR(100) UNIQUE
+                            URL TEXT UNIQUE
                             );
                         ''')
 
@@ -67,11 +67,3 @@ class LinkedIn:
         cursor.execute("SELECT * from posts;")
         record = cursor.fetchall()
         print(record)
-
-
-linkedIn = LinkedIn()
-linkedIn.connect()
-linkedIn.createTables()
-linkedIn.intoProfile('nrm', 12, 15, 16, '.coym')
-linkedIn.intoPosts(3, 8, "march", 1)
-linkedIn.select()
