@@ -24,7 +24,7 @@ class LinkedIn:
         record = cursor.fetchone()
         print("You are connected to - ", record, "\n")
 
-    def createTables(self):
+    def createTableProfile(self):
         cursor.execute('BEGIN TRANSACTION;')
         cursor.execute('''
                         CREATE TABLE IF NOT EXISTS profile (
@@ -36,7 +36,10 @@ class LinkedIn:
                             URL TEXT UNIQUE
                             );
                         ''')
+        cursor.execute('COMMIT;')
 
+    def createTablePosts(self):
+        cursor.execute('BEGIN TRANSACTION;')
         cursor.execute('''
                         CREATE TABLE IF NOT EXISTS posts (
                             id SERIAL PRIMARY KEY,
