@@ -4,7 +4,7 @@ import pg8000
 # Custom
 from config import (user, password, host, port)
 
-class LinkedIn:
+class DB:
     def __init__(self):
         pass
 
