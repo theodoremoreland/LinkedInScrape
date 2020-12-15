@@ -8,7 +8,7 @@ daugherty = Company("Daugherty Business Solutions",
                     instagram="https://www.instagram.com/daughertyphotos/",
                     youtube="http://youtube.com/user/daughertyvideo/")
 
-slalom = Company("slalom",
+slalom = Company("Slalom",
                  address="7800 Forsyth Blvd #850, Clayton, MO 63105",
                  linkedin="https://www.linkedin.com/company/slalom-consulting/",
                  twitter="https://twitter.com/Slalom",
