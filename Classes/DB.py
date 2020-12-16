@@ -46,6 +46,7 @@ class DB:
         cursor.execute('''
                         CREATE TABLE IF NOT EXISTS company_posts (
                             id SERIAL PRIMARY KEY,
+                            content TEXT,
                             likes INTEGER,
                             comments INTEGER,
                             date VARCHAR(20),
