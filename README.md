@@ -1,1 +1,2 @@
-Scrapers for major social media platforms.
+# LinkedIn Scrape
+Bot for scraping LinkedIn profiles. 

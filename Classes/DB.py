@@ -2,7 +2,7 @@
 import pg8000
 
 # Custom
-from config import (user, password, host, port)
+from .databaseCred import (user, password, host, port)
 
 class DB:
     def __init__(self):
@@ -17,7 +17,7 @@ class DB:
                                     password=password,
                                     host=host,
                                     port=int(port),
-                                    database="linkedin")
+                                    database="web_data")
 
         cursor = connection.cursor()
 
@@ -27,53 +27,58 @@ class DB:
         print("You are connected to - ", record, "\n")
 
 
-    def createTableProfile(self):
+    def createTableCompanyProfiles(self):
         cursor.execute('BEGIN TRANSACTION;')
         cursor.execute('''
-                        CREATE TABLE IF NOT EXISTS profile (
+                        CREATE TABLE IF NOT EXISTS company_profiles (
                             company_id SERIAL PRIMARY KEY,
-                            name TEXT UNIQUE,
+                            name TEXT,
                             followers INTEGER,
                             employees_on_linkedin INTEGER,
-                            size INTEGER,
-                            URL TEXT UNIQUE
+                            URL TEXT
                             );
                         ''')
         cursor.execute('COMMIT;')
 
 
-    def createTablePosts(self):
+    def createTableCompanyPosts(self):
         cursor.execute('BEGIN TRANSACTION;')
         cursor.execute('''
-                        CREATE TABLE IF NOT EXISTS posts (
+                        CREATE TABLE IF NOT EXISTS company_posts (
                             id SERIAL PRIMARY KEY,
                             likes INTEGER,
                             comments INTEGER,
                             date VARCHAR(20),
-                            company_id INTEGER REFERENCES profile(company_id)
+                            company_id INTEGER REFERENCES company_profiles(company_id)
                             );
                         ''')
         cursor.execute('COMMIT;')
 
 
-    def intoProfile(self, name, followers, employees_on_linkedin, size, url):
-        s = f"INSERT INTO profile(name, followers, employees_on_linkedin, size, url) VALUES ('{name}', {followers}, {employees_on_linkedin}, {size}, '{url}');"
+    def intoCompanyProfiles(self, name, followers, employees_on_linkedin, url):
+        s = f"INSERT INTO company_profiles(name, followers, employees_on_linkedin, url) VALUES ('{name}', {followers}, {employees_on_linkedin}, '{url}');"
         cursor.execute('BEGIN TRANSACTION;')
         cursor.execute(s)
         cursor.execute('COMMIT;')
 
 
-    def intoPosts(self, likes, comments, date, company_id):
-        s = f"INSERT INTO posts(likes, comments, date, company_id) VALUES ({likes}, {comments}, '{date}', {company_id});"
+    def intoCompanyPosts(self, content, likes, comments, date, company_id):
+        s = f"INSERT INTO company_posts(content, likes, comments, date, company_id) VALUES ('{content}', {likes}, {comments}, '{date}', {company_id});"
         cursor.execute('BEGIN TRANSACTION;')
         cursor.execute(s)
         cursor.execute('COMMIT;')
 
 
     def select(self):
-        cursor.execute("SELECT * from profile;")
-        record = cursor.fetchall()
-        print(record)
-        cursor.execute("SELECT * from posts;")
-        record = cursor.fetchall()
-        print(record)
+        try:
+            cursor.execute("SELECT * from company_profiles;")
+            record = cursor.fetchall()
+            print(record)
+        except Exception as e:
+            pass
+        try:
+            cursor.execute("SELECT * from company_posts;")
+            record = cursor.fetchall()
+            print(record)
+        except Exception as e:
+            pass
