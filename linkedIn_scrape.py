@@ -7,7 +7,7 @@ import pandas as pd
 from splinter import Browser
 
 from notebooks.linkedIn_cred import linkedIn_email, linkedIn_password
-from scripts.company_objects import daugherty, slalom, _1904labs, worldWideTechnology
+from modules.company_objects import daugherty, slalom, _1904labs, worldWideTechnology
 
 companies = [daugherty, slalom, _1904labs, worldWideTechnology]
 
