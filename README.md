@@ -22,7 +22,6 @@ Example output can be found in the "data" folder (Note: Certain scraping attempt
 * Pandas
 * Splinter
 * chromedriver
-* BeautifulSoup4
 * pg8000
 * PostgreSQL
 
