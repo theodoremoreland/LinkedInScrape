@@ -1,7 +1,7 @@
 # LinkedIn Scrape (Deprecated)
 Script for scraping LinkedIn company profiles and posts. The project was created to extract data on IT consultation companies in the Greater Saint Louis area which could then be compared and analyzed to garner insights. The files in this repository use Daugherty Business Solutions, Slalom, 1904labs, and World Wide Technology as examples.
 
-*This project is deprecated and will not be getting ongoing support. Considering my experiences with scraping LinkedIn, the scripts will be outdated sooner than later, the website changed its layout twice while developing in just 24 hours! Don't know if that was universal or limited to my experience (for whatever reason).*
+*This project is deprecated and will not be getting ongoing support. Considering my experiences with scraping LinkedIn, the scripts will be outdated sooner than later.*
 
 # Data Gathered
 ### Profile Metadata
