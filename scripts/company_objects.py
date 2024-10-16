@@ -1,4 +1,4 @@
-from Classes.Company import Company
+from classes.Company import Company
 
 daugherty = Company(
     "Daugherty Business Solutions",

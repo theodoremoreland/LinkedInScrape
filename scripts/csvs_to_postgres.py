@@ -5,7 +5,7 @@ import sys
 import pandas as pd
 
 sys.path.append("..")
-from Classes.DB import DB
+from classes.DB import DB
 
 web_data_db = DB()
 web_data_db.connect()
